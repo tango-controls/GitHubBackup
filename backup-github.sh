@@ -54,7 +54,7 @@ while true; do
   let PAGE++
   $GHBU_SILENT || echo "getting page ${PAGE}"
   #REPOLIST_TMP=`check curl ${GHBU_PROXY_SETTINGS} --silent -u $GHBU_UNAME:$GHBU_PASSWD ${GHBU_API}/orgs/${GHBU_ORG}/repos\?page=${PAGE}\&per_page=90 -q -k | grep "\"name\"" | awk -F': "' '{print $2}' | sed -e 's/",//g'`
-  REPOLIST_TMP=`check curl ${GHBU_PROXY_SETTINGS} --silent -H "Authorization: token ${GHBU_TOKEN}" ${GHBU_API}/orgs/${GHBU_ORG}/repos\?page=${PAGE}\&per_page=90 -q -k | grep "\"name\"" | awk -F': "' '{print $2}' | sed -e 's/",//g'`
+  REPOLIST_TMP=`check curl ${GHBU_PROXY_SETTINGS} --silent -H "Authorization: token ${GHBU_TOKEN}" ${GHBU_API}/orgs/${GHBU_ORG}/repos\?page=${PAGE}\&per_page=90 -q -k | jq '.[] | { name: .name}' | grep "\"name\"" | awk -F': "' '{print $2}' | sed -e 's/"$//g'`
   if [ -z "${REPOLIST_TMP}" ]; then break; fi
   REPOLIST="${REPOLIST} ${REPOLIST_TMP}"
 done
