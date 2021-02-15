@@ -13,7 +13,8 @@ GHBU_PRUNE_OLD=${GHBU_PRUNE_OLD-true}                                # when `tru
 GHBU_PRUNE_AFTER_N_DAYS=${GHBU_PRUNE_AFTER_N_DAYS-3}                 # the min age (in days) of backup files to delete
 GHBU_SILENT=${GHBU_SILENT-false}                                     # when `true`, only show error messages 
 GHBU_API=${GHBU_API-"https://api.github.com"}                        # base URI for the GitHub API
-GHBU_GIT_CLONE_CMD="git clone --quiet --mirror git@${GHBU_GITHOST}:" # base command to use to clone GitHub repos
+#GHBU_GIT_CLONE_CMD="git clone --quiet --mirror git@${GHBU_GITHOST}:" # base command to use to clone GitHub repos
+GHBU_GIT_CLONE_CMD="git clone --quiet --mirror https://${GHBU_TOKEN}:x-oauth-basic@${GHBU_GITHOST}/" # base command to use to clone GitHub repos via HTTPS using token
 #GHBU_GIT_CLONE_CMD="git clone --mirror git@${GHBU_GITHOST}:"         # base command to use to clone GitHub repos - useful to debug
 GHBU_PROXY_SETTINGS=${GHBU_PROXY_SETTINGS-""}                        # Proxy settings for curl command - Eg: -x proxy.mydomain.com:7845
 

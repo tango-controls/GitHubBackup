@@ -15,6 +15,8 @@ The following environment variables can be defined to make this script fit to yo
 * GHBU_GIT_CLONE_CMD: base command to use to clone GitHub repositories (default = "git clone --quiet --mirror git@${GHBU_GIHOST}:")
 * GHBU_PROXY_SETTINGS: Proxy settings for curl command. For instance "-x proxy.mydomain.com:1234". (Default = "")
 
+Script requires jq; install with `apt install jq` on Ubuntu.
+
 The script will generate per repository X from the target organization:
 * a tar.gz file containing the git repository X
 * a tar.gz containing the git repository of this X repository's wiki 
